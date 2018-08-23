@@ -5540,6 +5540,8 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
         regex = _props5.regex;
 
 
+    console.log('displayTransform', displayTransform);
+
     var newPlainTextValue = ev.target.value;
 
     // Derive the new value to set by applying the local change in the textarea's plain text
@@ -5928,14 +5930,8 @@ var styled = Object(__WEBPACK_IMPORTED_MODULE_8_substyle__["defaultStyle"])({
   overflowY: 'visible',
 
   input: {
-    display: 'block',
     position: 'absolute',
-    top: 0,
-    boxSizing: 'border-box',
-    backgroundColor: 'transparent',
-    width: 'inherit',
-    fontFamily: 'inherit',
-    fontSize: 'inherit'
+    top: 0
   },
 
   '&multiLine': {

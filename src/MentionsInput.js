@@ -182,7 +182,7 @@ class MentionsInput extends React.Component {
       <input
         type="text"
         ref={el => {
-          this.inputRef = el
+          this.inputRef = el;
         }}
         {...props}
       />
@@ -298,6 +298,8 @@ class MentionsInput extends React.Component {
 
     const value = this.props.value || ''
     const { markup, displayTransform, regex } = this.props
+
+    console.log('displayTransform', displayTransform);
 
     let newPlainTextValue = ev.target.value
 
@@ -780,14 +782,8 @@ const styled = defaultStyle(
     overflowY: 'visible',
 
     input: {
-      display: 'block',
       position: 'absolute',
       top: 0,
-      boxSizing: 'border-box',
-      backgroundColor: 'transparent',
-      width: 'inherit',
-      fontFamily: 'inherit',
-      fontSize: 'inherit',
     },
 
     '&multiLine': {
