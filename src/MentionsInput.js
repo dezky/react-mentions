@@ -164,7 +164,7 @@ class MentionsInput extends React.Component {
   }
 
   renderControl = () => {
-    let { singleLine, style } = this.props
+    let { singleLine, style, submitBtn } = this.props
     let inputProps = this.getInputProps(!singleLine)
 
     return (
@@ -173,6 +173,7 @@ class MentionsInput extends React.Component {
         {singleLine
           ? this.renderInput(inputProps)
           : this.renderTextarea(inputProps)}
+        {submitBtn && this.renderSubmit()}
       </div>
     )
   }
@@ -197,6 +198,12 @@ class MentionsInput extends React.Component {
         }}
         {...props}
       />
+    )
+  }
+
+  renderSubmit() {
+    return (
+      <input type="submit" value="submit" className="enter"/>
     )
   }
 
