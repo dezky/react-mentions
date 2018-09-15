@@ -72,7 +72,7 @@ const propTypes = {
    * instead of a textarea
    */
   singleLine: PropTypes.bool,
-  
+
   /**
    * If set to `true` an input submit is shown
    */
@@ -104,6 +104,7 @@ class MentionsInput extends React.Component {
   static defaultProps = {
     markup: '@[__display__](__id__)',
     singleLine: false,
+    submitBtn: false,
     displayTransform: function(id, display, type) {
       return display
     },
