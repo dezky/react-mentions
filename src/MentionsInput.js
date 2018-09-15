@@ -72,6 +72,11 @@ const propTypes = {
    * instead of a textarea
    */
   singleLine: PropTypes.bool,
+  
+  /**
+   * If set to `true` an input submit is shown
+   */
+  submitBtn: PropTypes.bool,
 
   /**
    * If set to `true` spaces will not interrupt matching suggestions
