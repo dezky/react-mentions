@@ -5281,6 +5281,11 @@ var propTypes = {
   singleLine: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
 
   /**
+   * If set to `true` an input submit is shown
+   */
+  submitBtn: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+
+  /**
    * If set to `true` spaces will not interrupt matching suggestions
    */
   allowSpaceInQuery: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
@@ -5338,6 +5343,10 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
     );
   };
 
+  MentionsInput.prototype.renderSubmit = function renderSubmit() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'submit', className: 'enter' });
+  };
+
   // Returns the text to set as the value of the textarea with all markups removed
 
 
@@ -5366,6 +5375,7 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component), _class.propTypes = propTypes, _class.defaultProps = {
   markup: '@[__display__](__id__)',
   singleLine: false,
+  submitBtn: false,
   displayTransform: function displayTransform(id, display, type) {
     return display;
   },
@@ -5409,7 +5419,8 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   this.renderControl = function () {
     var _props2 = _this3.props,
         singleLine = _props2.singleLine,
-        style = _props2.style;
+        style = _props2.style,
+        submitBtn = _props2.submitBtn;
 
     var inputProps = _this3.getInputProps(!singleLine);
 
@@ -5417,7 +5428,8 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
       'div',
       style('control'),
       _this3.renderHighlighter(inputProps.style),
-      singleLine ? _this3.renderInput(inputProps) : _this3.renderTextarea(inputProps)
+      singleLine ? _this3.renderInput(inputProps) : _this3.renderTextarea(inputProps),
+      submitBtn && _this3.renderSubmit()
     );
   };
 
