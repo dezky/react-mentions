@@ -133,10 +133,6 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
     );
   };
 
-  MentionsInput.prototype.renderSubmit = function renderSubmit() {
-    return React.createElement('input', { type: 'submit', value: 'submit', className: 'enter' });
-  };
-
   // Returns the text to set as the value of the textarea with all markups removed
 
 
@@ -206,6 +202,16 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
     });
   };
 
+  this.getSubmitProps = function () {
+    var style = _this3.props.style;
+
+    // pass all props that we don't use through to the input control
+
+    var props = omit(_this3.props, 'style', keys(propTypes));
+
+    return _extends({}, props, style('enter'));
+  };
+
   this.renderControl = function () {
     var _props2 = _this3.props,
         singleLine = _props2.singleLine,
@@ -213,13 +219,13 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
         submitBtn = _props2.submitBtn;
 
     var inputProps = _this3.getInputProps(!singleLine);
-
+    var submitProps = _this3.getSubmitProps();
     return React.createElement(
       'div',
       style('control'),
       _this3.renderHighlighter(inputProps.style),
       singleLine ? _this3.renderInput(inputProps) : _this3.renderTextarea(inputProps),
-      submitBtn && _this3.renderSubmit()
+      submitBtn && _this3.renderSubmit(submitProps)
     );
   };
 
@@ -238,6 +244,10 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
         _this3.inputRef = el;
       }
     }, props));
+  };
+
+  this.renderSubmit = function (props) {
+    return React.createElement('input', _extends({ type: 'submit', value: 'submit', className: 'enter' }, props));
   };
 
   this.renderSuggestionsOverlay = function () {
@@ -341,8 +351,6 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
         displayTransform = _props5.displayTransform,
         regex = _props5.regex;
 
-
-    console.log('displayTransform', displayTransform);
 
     var newPlainTextValue = ev.target.value;
 

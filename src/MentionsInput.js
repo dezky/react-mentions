@@ -169,17 +169,29 @@ class MentionsInput extends React.Component {
     }
   }
 
+  getSubmitProps = () => {
+    let { style } = this.props
+
+    // pass all props that we don't use through to the input control
+    let props = omit(this.props, 'style', keys(propTypes))
+
+    return {
+      ...props,
+      ...style('enter'),
+    }
+  }
+
   renderControl = () => {
     let { singleLine, style, submitBtn } = this.props
     let inputProps = this.getInputProps(!singleLine)
-
+    let submitProps = this.getSubmitProps()
     return (
       <div {...style('control')}>
         {this.renderHighlighter(inputProps.style)}
         {singleLine
           ? this.renderInput(inputProps)
           : this.renderTextarea(inputProps)}
-        {submitBtn && this.renderSubmit()}
+        {submitBtn && this.renderSubmit(submitProps)}
       </div>
     )
   }
@@ -207,9 +219,9 @@ class MentionsInput extends React.Component {
     )
   }
 
-  renderSubmit() {
+  renderSubmit = props => {
     return (
-      <input type="submit" value="submit" className="enter"/>
+      <input type="submit" value="submit" className="enter" {...props}/>
     )
   }
 
@@ -311,8 +323,6 @@ class MentionsInput extends React.Component {
 
     const value = this.props.value || ''
     const { markup, displayTransform, regex } = this.props
-
-    console.log('displayTransform', displayTransform);
 
     let newPlainTextValue = ev.target.value
 
