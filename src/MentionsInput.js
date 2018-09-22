@@ -188,10 +188,12 @@ class MentionsInput extends React.Component {
     return (
       <div {...style('control')}>
         {this.renderHighlighter(inputProps.style)}
-        {singleLine
-          ? this.renderInput(inputProps)
-          : this.renderTextarea(inputProps)}
-        {submitBtn && this.renderSubmit(submitProps)}
+        <div {...style('input-box')}>
+          {singleLine
+            ? this.renderInput(inputProps)
+            : this.renderTextarea(inputProps)}
+          {submitBtn && this.renderSubmit(submitProps)}
+        </div>
       </div>
     )
   }

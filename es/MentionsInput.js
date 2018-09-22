@@ -224,8 +224,12 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
       'div',
       style('control'),
       _this3.renderHighlighter(inputProps.style),
-      singleLine ? _this3.renderInput(inputProps) : _this3.renderTextarea(inputProps),
-      submitBtn && _this3.renderSubmit(submitProps)
+      React.createElement(
+        'div',
+        style('input-box'),
+        singleLine ? _this3.renderInput(inputProps) : _this3.renderTextarea(inputProps),
+        submitBtn && _this3.renderSubmit(submitProps)
+      )
     );
   };
 
