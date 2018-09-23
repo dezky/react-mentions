@@ -1,5 +1,5 @@
 /*!
- * react-mentions v0.0.1-development - https://github.com/signavio/react-mentions
+ * react-mentions v0.0.2-development - https://github.com/signavio/react-mentions
  * BSD-3-Clause Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -5954,9 +5954,6 @@ var styled = Object(__WEBPACK_IMPORTED_MODULE_8_substyle__["defaultStyle"])({
   overflowY: 'visible',
 
   input: {
-    display: 'block',
-    position: 'absolute',
-    top: 0,
     boxSizing: 'border-box',
     backgroundColor: 'transparent',
     width: 'inherit',
