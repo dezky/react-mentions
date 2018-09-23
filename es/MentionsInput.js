@@ -88,6 +88,7 @@ var propTypes = {
   onSelect: PropTypes.func,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onClickSubmit: PropTypes.func,
 
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired
 };
@@ -173,6 +174,9 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   },
   onBlur: function onBlur() {
     return null;
+  },
+  onClickSubmit: function onClickSubmit() {
+    return null;
   }
 }, _initialiseProps = function _initialiseProps() {
   var _this3 = this;
@@ -251,7 +255,9 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   };
 
   this.renderSubmit = function (props) {
-    return React.createElement('input', _extends({ type: 'submit', value: 'submit', className: 'enter' }, props));
+    var onClickSubmit = _this3.props.onClickSubmit;
+
+    return React.createElement('input', _extends({ type: 'submit', value: 'submit', className: 'enter' }, props, { onClick: onClickSubmit }));
   };
 
   this.renderSuggestionsOverlay = function () {

@@ -5298,6 +5298,7 @@ var propTypes = {
   onSelect: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
   onBlur: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
   onChange: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
+  onClickSubmit: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
 
   children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.element, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.element)]).isRequired
 };
@@ -5383,6 +5384,9 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   },
   onBlur: function onBlur() {
     return null;
+  },
+  onClickSubmit: function onClickSubmit() {
+    return null;
   }
 }, _initialiseProps = function _initialiseProps() {
   var _this3 = this;
@@ -5461,7 +5465,9 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   };
 
   this.renderSubmit = function (props) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', _extends({ type: 'submit', value: 'submit', className: 'enter' }, props));
+    var onClickSubmit = _this3.props.onClickSubmit;
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', _extends({ type: 'submit', value: 'submit', className: 'enter' }, props, { onClick: onClickSubmit }));
   };
 
   this.renderSuggestionsOverlay = function () {

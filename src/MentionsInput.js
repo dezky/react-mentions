@@ -91,6 +91,7 @@ const propTypes = {
   onSelect: PropTypes.func,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onClickSubmit: PropTypes.func,
 
   children: PropTypes.oneOfType([
     PropTypes.element,
@@ -111,6 +112,7 @@ class MentionsInput extends React.Component {
     onKeyDown: () => null,
     onSelect: () => null,
     onBlur: () => null,
+    onClickSubmit: () => null
   }
 
   constructor(props) {
@@ -144,7 +146,7 @@ class MentionsInput extends React.Component {
     )
   }
 
-  getInputProps = isTextarea => {
+  getInputProps = isTextarea => {    
     let { readOnly, disabled, style } = this.props
 
     // pass all props that we don't use through to the input control
@@ -222,8 +224,9 @@ class MentionsInput extends React.Component {
   }
 
   renderSubmit = props => {
+    const { onClickSubmit } = this.props;
     return (
-      <input type="submit" value="submit" className="enter" {...props}/>
+      <input type="submit" value="submit" className="enter" {...props} onClick={onClickSubmit}/>
     )
   }
 
