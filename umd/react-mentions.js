@@ -1,5 +1,5 @@
 /*!
- * react-mentions v0.0.2-development - https://github.com/signavio/react-mentions
+ * react-mentions v0.0.3-development - https://github.com/signavio/react-mentions
  * BSD-3-Clause Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
