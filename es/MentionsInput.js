@@ -17,6 +17,7 @@ import values from 'lodash/values';
 import omit from 'lodash/omit';
 import isEqual from 'lodash/isEqual';
 import isNumber from 'lodash/isNumber';
+import TextareaAutosize from 'react-autosize-textarea';
 
 import { defaultStyle } from 'substyle';
 
@@ -247,7 +248,8 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   };
 
   this.renderTextarea = function (props) {
-    return React.createElement('textarea', _extends({
+    console.log(props);
+    return React.createElement(TextareaAutosize, _extends({ rows: 2, maxRows: 8,
       ref: function ref(el) {
         _this3.inputRef = el;
       }
