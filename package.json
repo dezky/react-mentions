@@ -1,6 +1,6 @@
 {
   "name": "react-mentions",
-  "version": "0.0.5-development",
+  "version": "0.0.6-development",
   "description": "React mentions input",
   "main": "lib/index.js",
   "module": "es/index.js",

@@ -1,5 +1,5 @@
 /*!
- * react-mentions v0.0.5-development - https://github.com/signavio/react-mentions
+ * react-mentions v0.0.6-development - https://github.com/signavio/react-mentions
  * BSD-3-Clause Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -5444,12 +5444,8 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
       'div',
       style('control'),
       _this3.renderHighlighter(inputProps.style),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        style('input-box'),
-        singleLine ? _this3.renderInput(inputProps) : _this3.renderTextarea(inputProps),
-        submitBtn && _this3.renderSubmit(submitProps)
-      )
+      singleLine ? _this3.renderInput(inputProps) : _this3.renderTextarea(inputProps),
+      submitBtn && _this3.renderSubmit(submitProps)
     );
   };
 
