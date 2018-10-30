@@ -7,7 +7,6 @@ import values from 'lodash/values'
 import omit from 'lodash/omit'
 import isEqual from 'lodash/isEqual'
 import isNumber from 'lodash/isNumber'
-import TextareaAutosize from 'react-autosize-textarea';
 
 import { defaultStyle } from 'substyle'
 
@@ -195,7 +194,7 @@ class MentionsInput extends React.Component {
     let submitProps = this.getSubmitProps()
     return (
       <div {...style('control')}>
-        {showHighlights && this.renderHighlighter(inputProps.style)}
+        {this.renderHighlighter(inputProps.style)}
         <div {...style('input-box')}>
           {singleLine
             ? this.renderInput(inputProps)
@@ -220,9 +219,9 @@ class MentionsInput extends React.Component {
 
   renderTextarea = props => {
     return (
-      <TextareaAutosize
+      <textarea
         ref={el => {
-          this.inputRef = el ? el.textarea : el
+          this.inputRef = el
         }}
         {...props}
       />
@@ -817,6 +816,7 @@ const styled = defaultStyle(
 
     input: {
       display: 'block',
+      position: 'absolute',
       top: 0,
       boxSizing: 'border-box',
       backgroundColor: 'transparent',

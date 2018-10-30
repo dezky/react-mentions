@@ -17,7 +17,6 @@ import values from 'lodash/values';
 import omit from 'lodash/omit';
 import isEqual from 'lodash/isEqual';
 import isNumber from 'lodash/isNumber';
-import TextareaAutosize from 'react-autosize-textarea';
 
 import { defaultStyle } from 'substyle';
 
@@ -234,7 +233,7 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
     return React.createElement(
       'div',
       style('control'),
-      showHighlights && _this3.renderHighlighter(inputProps.style),
+      _this3.renderHighlighter(inputProps.style),
       React.createElement(
         'div',
         style('input-box'),
@@ -254,9 +253,9 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   };
 
   this.renderTextarea = function (props) {
-    return React.createElement(TextareaAutosize, _extends({
+    return React.createElement('textarea', _extends({
       ref: function ref(el) {
-        _this3.inputRef = el ? el.textarea : el;
+        _this3.inputRef = el;
       }
     }, props));
   };
@@ -759,6 +758,7 @@ var styled = defaultStyle({
 
   input: _extends({
     display: 'block',
+    position: 'absolute',
     top: 0,
     boxSizing: 'border-box',
     backgroundColor: 'transparent',
