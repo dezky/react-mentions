@@ -17,6 +17,7 @@ import values from 'lodash/values';
 import omit from 'lodash/omit';
 import isEqual from 'lodash/isEqual';
 import isNumber from 'lodash/isNumber';
+import TextareaAutosize from 'react-autosize-textarea';
 
 import { defaultStyle } from 'substyle';
 
@@ -62,6 +63,7 @@ var _getDataProvider = function _getDataProvider(data) {
 var KEY = { TAB: 9, RETURN: 13, ESC: 27, UP: 38, DOWN: 40 };
 
 var isComposing = false;
+var showHighlightsParam = false;
 
 var propTypes = {
   /**
@@ -89,6 +91,7 @@ var propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onClickSubmit: PropTypes.func,
+  showHighlights: PropTypes.bool,
 
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired
 };
@@ -116,6 +119,8 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
       caretPosition: null,
       suggestionsPosition: null
     };
+
+    showHighlightsParam = _this.props.showHighlights;
     return _this;
   }
 
@@ -163,6 +168,7 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   markup: '@[__display__](__id__)',
   singleLine: false,
   submitBtn: false,
+  showHighlights: false,
   displayTransform: function displayTransform(id, display, type) {
     return display;
   },
@@ -220,14 +226,15 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
     var _props2 = _this3.props,
         singleLine = _props2.singleLine,
         style = _props2.style,
-        submitBtn = _props2.submitBtn;
+        submitBtn = _props2.submitBtn,
+        showHighlights = _props2.showHighlights;
 
     var inputProps = _this3.getInputProps(!singleLine);
     var submitProps = _this3.getSubmitProps();
     return React.createElement(
       'div',
       style('control'),
-      _this3.renderHighlighter(inputProps.style),
+      showHighlights && _this3.renderHighlighter(inputProps.style),
       React.createElement(
         'div',
         style('input-box'),
@@ -247,9 +254,9 @@ var MentionsInput = (_temp = _class = function (_React$Component) {
   };
 
   this.renderTextarea = function (props) {
-    return React.createElement('textarea', _extends({
+    return React.createElement(TextareaAutosize, _extends({
       ref: function ref(el) {
-        _this3.inputRef = el;
+        _this3.inputRef = el ? el.textarea : el;
       }
     }, props));
   };
@@ -750,13 +757,15 @@ var styled = defaultStyle({
   position: 'relative',
   overflowY: 'visible',
 
-  input: {
+  input: _extends({
+    display: 'block',
+    top: 0,
     boxSizing: 'border-box',
     backgroundColor: 'transparent',
     width: 'inherit',
     fontFamily: 'inherit',
     fontSize: 'inherit'
-  },
+  }, showHighlightsParam ? { position: 'absolute' } : null),
 
   '&multiLine': {
     input: _extends({

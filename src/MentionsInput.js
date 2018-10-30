@@ -7,6 +7,7 @@ import values from 'lodash/values'
 import omit from 'lodash/omit'
 import isEqual from 'lodash/isEqual'
 import isNumber from 'lodash/isNumber'
+import TextareaAutosize from 'react-autosize-textarea';
 
 import { defaultStyle } from 'substyle'
 
@@ -65,6 +66,7 @@ const _getDataProvider = function(data) {
 const KEY = { TAB: 9, RETURN: 13, ESC: 27, UP: 38, DOWN: 40 }
 
 let isComposing = false
+let showHighlightsParam = false;
 
 const propTypes = {
   /**
@@ -92,6 +94,7 @@ const propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onClickSubmit: PropTypes.func,
+  showHighlights: PropTypes.bool,
 
   children: PropTypes.oneOfType([
     PropTypes.element,
@@ -106,6 +109,7 @@ class MentionsInput extends React.Component {
     markup: '@[__display__](__id__)',
     singleLine: false,
     submitBtn: false,
+    showHighlights: false,
     displayTransform: function(id, display, type) {
       return display
     },
@@ -130,6 +134,8 @@ class MentionsInput extends React.Component {
       caretPosition: null,
       suggestionsPosition: null,
     }
+
+    showHighlightsParam = this.props.showHighlights;
   }
 
   render() {
@@ -184,12 +190,12 @@ class MentionsInput extends React.Component {
   }
 
   renderControl = () => {
-    let { singleLine, style, submitBtn } = this.props
+    let { singleLine, style, submitBtn, showHighlights } = this.props
     let inputProps = this.getInputProps(!singleLine)
     let submitProps = this.getSubmitProps()
     return (
       <div {...style('control')}>
-        {this.renderHighlighter(inputProps.style)}
+        {showHighlights && this.renderHighlighter(inputProps.style)}
         <div {...style('input-box')}>
           {singleLine
             ? this.renderInput(inputProps)
@@ -214,9 +220,9 @@ class MentionsInput extends React.Component {
 
   renderTextarea = props => {
     return (
-      <textarea
+      <TextareaAutosize
         ref={el => {
-          this.inputRef = el
+          this.inputRef = el ? el.textarea : el
         }}
         {...props}
       />
@@ -810,11 +816,14 @@ const styled = defaultStyle(
     overflowY: 'visible',
 
     input: {
+      display: 'block',
+      top: 0,
       boxSizing: 'border-box',
       backgroundColor: 'transparent',
       width: 'inherit',
       fontFamily: 'inherit',
-      fontSize: 'inherit'
+      fontSize: 'inherit',
+      ...(showHighlightsParam ? {position: 'absolute'} : null)      
     },
 
     '&multiLine': {

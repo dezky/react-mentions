@@ -32,7 +32,7 @@ Mention.propTypes = {
     PropTypes.instanceOf(RegExp),
   ]),
 
-  isLoading: PropTypes.bool,
+  isLoading: PropTypes.bool
 }
 
 Mention.defaultProps = {
@@ -42,7 +42,7 @@ Mention.defaultProps = {
   onRemove: () => null,
   renderSuggestion: null,
   isLoading: false,
-  appendSpaceOnAdd: false,
+  appendSpaceOnAdd: false
 }
 
 export default Mention
